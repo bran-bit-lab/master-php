@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pagina Web</title>
+</head>
+<body>
+	
+	<h1>Titulo</h1>
+	<p>aprendiendo <br/> php</p>
+	<hr>
+		<img src="./imagenes/placeholder.png" alt="imagen placeholder">
+	<hr>
+	<!--etiqueta ol para listas ordenadas y ul desordenadas-->
+	<ul>
+		<li>Caracas
+			<ul>
+				<li>Dtto Capital</li>
+			</ul></li>
+		<li>Barquisimeto</li>
+		<li>San Cristobal</li>
+	</ul>
+
+	<h2>TABLAS</h2>
+		
+		<table border="1">
+			
+			<tr>
+				<th>Nombre</th>
+				<th>Apelido</th>
+			</tr>
+		
+			<tr>
+				<td>Brandon</td>
+				<td>Silva</td>
+			</tr>
+		
+			<tr>
+				<td>Brian</td>
+				<td>Sanchez</td>
+			</tr>
+	</table>
+<br/>
+
+	
+	<form>
+		<p>
+			<label for="name">Nombre</label>
+			<input type="text" name="name" placeholder="escribe aqui" value="Brandon" id="name">
+		</p>
+		<p>
+			<label for="descripcion">Descripcion</label>
+			<textarea name="descripcion" placeholder="caracteristicas"></textarea>
+		</p>
+		
+		<input type="radio" name="genero" value="hombre"> hombre <br/>
+		<input type="radio" name="genero" value="mujer"> mujer <br/>
+
+		<select name="generodos">
+			<option value="hombre">hombre</option>
+			<option value="mujer">mujer</option>
+		</select>
+
+		<input type="submit" value="enviar formulario">
+
+	</form>
+	
+	
+</body>
+</html>
