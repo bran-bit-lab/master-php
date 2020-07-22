@@ -37,6 +37,5 @@ $edadOficial=18;
 
 ?>
 
-
 </body>
 </html> 
