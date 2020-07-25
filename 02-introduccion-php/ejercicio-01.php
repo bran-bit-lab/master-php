@@ -35,7 +35,25 @@ $edadOficial=18;
 		echo "Joven";
 	}
 
+echo "<hr/>";
+
+echo "Hacer un pseudocódigo que imprima los numeros impares hasta el 100 y que
+imprima cuantos impares hay" . "<br/>";
+
+$contadorImpar= 0;
+for ($num=1; $num <=100 ; $num+= 2) { 
+	echo "$num , ";
+	
+	$contadorImpar++;
+if ($num == 99) {
+		echo "Cantidad de impares: " . $contadorImpar;
+	}
+}
+
+
 ?>
 
 </body>
 </html> 
+
+
