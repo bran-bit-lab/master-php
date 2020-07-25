@@ -4,7 +4,7 @@ for ($aterisco1 = 0; $aterisco1 <= 9 ; $aterisco1++) {
 	
 	for ($aterisco2 = 0; $aterisco2 <= $aterisco1 ; $aterisco2++) { 
 	
-	echo "*";
+	echo $aterisco1;
 	}
 	echo "\n";
 }
