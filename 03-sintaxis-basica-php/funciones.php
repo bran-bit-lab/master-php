@@ -45,10 +45,20 @@ function tabla($numero,$number){
 }
 */
 //arreglo diccionario
-if (isset($_GET['numero1']['numero2'])) {
+
+var_dump( $_GET );
+echo "<br>";
+var_dump($_GET['numero1']);
+echo "<br>";
+var_dump($_GET['numero2']);
+echo "<br>";
+
+
+
+/*if (isset($_GET['numero1']['numero2'])) {
 	// En este ejemplo se esta parseando el valor de un string a un integrer
 	var_dump($_GET['numero1'])
-	}
+}*/
 	//$num= (int) $_GET['numero']['number'];
 	//var_dump($num);
 	//tabla($num);
