@@ -1,23 +1,32 @@
-<?php  
+<?php 
 
-	for ( $fila = 1; $fila <= 10 ; $fila++ ) { 
-		
-		for ( $columna = 1; $columna <= 10 ; $columna++ ) {  
-			
-			if ( $fila % 2 != 0 ) {
+for ($fila=1; $fila <=8 ; $fila++) { 
 
-				echo "*";
-				echo " ";
+	for ($columna=1; $columna <=8 ; $columna++) { 
 
-			} else {
+		// % permite validar si un numero es par o no 
 
-				echo " ";
-				echo "*";
-			}
-
+		if ($fila % 2 == 0)  {
+			echo "*";
+			echo " ";
+		} else {
+			echo " ";
+			echo "*";
 		}
 
-		echo "\n";
 	}
 
-?>
+ 	echo "\n";
+
+
+}
+
+
+
+
+
+
+
+
+
+ ?>
