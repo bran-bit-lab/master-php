@@ -17,7 +17,7 @@ muestra_nombres();
 */
 
 
-function tabla($numero){
+function tabla($numero,$number){
 
 	echo "<h3> tabla del numero $numero </h3>";
 
@@ -32,29 +32,25 @@ function tabla($numero){
 
 */
 
-/* if (isset($_GET['numero'])){
+/*
+ if (isset($_GET['numero'])){
 
 	// var_dump($_GET);
-	echo $_GET['numero2'];
+	echo $_GET['numero'];
 
 }else{
 
-	echo "Ingrese un numero por a url";
+	echo "Ingrese un numero por la url";
 
-}*/
-
-
-if (isset($_GET['numero'])) {
-	// En este ejemplo se esta parseando el valor de un string a un integrer
-	$num= (int) $_GET['numero'];
-	//var_dump($num);
-	tabla($num);
 }
-
-
-
-
-
-
+*/
+//arreglo diccionario
+if (isset($_GET['numero1']['numero2'])) {
+	// En este ejemplo se esta parseando el valor de un string a un integrer
+	var_dump($_GET['numero1'])
+	}
+	//$num= (int) $_GET['numero']['number'];
+	//var_dump($num);
+	//tabla($num);
 
  ?>
