@@ -26,11 +26,11 @@ function tabla($numero,$number){
 		echo "$numero * $multiplicador = $resultado <br/>";
 }
 }
-/*	
-	tabla(5);
-	tabla(10);
+	
+	tabla(5,3);
+	//tabla(10);
 
-*/
+
 
 /*
  if (isset($_GET['numero'])){
@@ -44,23 +44,32 @@ function tabla($numero,$number){
 
 }
 */
-//arreglo diccionario
+//Ejm de arreglo diccionario e introduccion de 2 parametros por la URL
 
 var_dump( $_GET );
-echo "<br>";
+echo "<br/>";
 var_dump($_GET['numero1']);
-echo "<br>";
+echo "<br/>";
 var_dump($_GET['numero2']);
-echo "<br>";
+echo "<br/>";
 
+$numero1= $_GET['numero1'];
+$numero2= $_GET['numero2'];
 
+echo $numero1 . "<br/>";
 
-/*if (isset($_GET['numero1']['numero2'])) {
+echo $numero2;
+
+if (isset($_GET['numero1'])&isset($_GET['numero2'])) {
 	// En este ejemplo se esta parseando el valor de un string a un integrer
-	var_dump($_GET['numero1'])
-}*/
-	//$num= (int) $_GET['numero']['number'];
-	//var_dump($num);
+	$numero1= (int) $_GET['numero1'];
+	$numero2= (int) $_GET['numero2'];
+	echo "<br>";
+	var_dump($numero2);
+	}
+
+	
+	//var_dump($numero1);
 	//tabla($num);
 
  ?>
