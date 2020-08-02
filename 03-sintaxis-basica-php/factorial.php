@@ -1,7 +1,6 @@
 <?php 
 
 //Obtener el factorial de un numero por la URL
-
 function factorial(){
 	
 	$resultado= 1;
@@ -18,7 +17,7 @@ function factorial(){
 }
 
 if ( isset($_GET['numero']) ){
- 	echo factorial();
+ 	echo "el factorial del número es: ". factorial();
 }else{
 	echo "<b>Introducir dato por la URL</b>";
 }
