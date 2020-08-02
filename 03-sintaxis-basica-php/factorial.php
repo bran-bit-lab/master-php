@@ -1,30 +1,29 @@
 <?php 
 
-// Ejm devolucion de valores predeterminados en caso de funcion sin parametros
+//Obtener el factorial de un numero por la URL
 
-function hacer_cafe($tipo="capuchino"){
-	return "El cafe es " . $tipo . "<br/>";	
-}
-
-echo hacer_cafe();
-
- 
-echo "<hr/>";
-
-
-
-function factorial($numero){
-	$numero= (int)	
+function factorial(){
 	
-	while ($numero >=1) {
-	 	$numero*($numero-1);
-	 } 
-		
-	return $numero;
+	$resultado= 1;
+	$contador= (int) $_GET['numero'];
+	
+	while ( $contador >= 1 ) {
+		$resultado= $contador * $resultado;
+	
+		$contador--;
+	}
+	
+	return $resultado;
+
 }
 
-factorial(5);
-
-//0424-2109635
+if ( isset($_GET['numero']) ){
+ 	echo factorial();
+}else{
+	echo "<b>Introducir dato por la URL</b>";
+}
  
+
+
+
  ?>
