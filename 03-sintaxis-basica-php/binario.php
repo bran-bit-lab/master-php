@@ -1,28 +1,30 @@
 <?php  
 
-	include "./array_ascii.php";  //inclusion de archivos a codigo php, otra opcion para llamar el archivo es usando require
+	// inclusion de archivos a codigo php, otra opcion para llamar el archivo es usando require
+	include "./array_ascii.php";  
 
 	function separarLetras( $palabra= "" ){
 		
-		//echo strlen( $palabra ); Para obtener longitud del texto
-		//echo substr( $palabra, 1, 1 ); Para obtener un valor especifico del texto
+		// echo strlen( $palabra ); Para obtener longitud del texto
+		// echo substr( $palabra, 1, 1 ); Para obtener un valor especifico del texto
 		
 		for ($contador=0; $contador < strlen( $palabra ); $contador++) { 
 			
-			//echo substr($palabra, $contador, 1) . "\n"; Imprimir valor especifico del texto
+			// echo substr($palabra, $contador, 1) . "\n"; Imprimir letra especifico del texto
 			
 			$letra= substr($palabra, $contador, 1);
 			conversionBinaria($letra);
 		}
-		 //conversionBinaria("e");
+		
+		// conversionBinaria("e");
 	}
 
 	function conversionBinaria( $letra ){
 
-		//global para usar varaiable del array ascii dentro de la funcion
-		
+		// global para usar varaiable del array ascii dentro de la funcion
 		global $arrayAscii;
 		global $binario;
+		
 		$string = "";
 
 		foreach ( $arrayAscii as $clave => $valor ) {
@@ -35,31 +37,31 @@
 					$valor= $valor / 2;
 				}
 
-				//bucle inverso para obtener el binario
-				
+				// bucle inverso para obtener el binario
 				$contador = strlen( $string ) - 1; 
 
 				while ($contador >= 0){
 					$binario .= substr( $string, $contador, 1);
+					
 					if ($contador == 0) {
 						$binario.= " ";
 					}
 
 					$contador--;
 				}
-				break;
+				
+				// sale del bucle
+				break; 
 			}
 		}
 	}
 
-	
-	echo "Bienvenido a la calculadora binaria \n";
+	// ejecucion automatica
+	echo "\nBienvenido a la calculadora binaria \n\n";
 
-	echo "¿Que desea convertir? \n";
-
-	echo "1-Convertir a binario \n";
-
-	echo "2-Convertir de binario a caracter \n";
+	echo "¿Que desea convertir? \n\n";
+	echo "1.- Convertir a binario \n";
+	echo "2.- Convertir de binario a caracter \n\n";
 
 	$opcion= (int) readline("Ingrese una opcion: ");
 
@@ -69,7 +71,7 @@
 	    case 1:
 	    	$palabra= readline("Ingrese la palabra: ");
 	        separarLetras ($palabra);
-	        echo "$binario" . "\n";
+	        echo "\n$binario\n\n";
 	        break;
 	    case 2:
 	        echo "De binario a caracter";
@@ -78,9 +80,4 @@
     		echo "La opcion no es valida";
 			break;
 	}	
-
-
-	
-	
-
 ?>
