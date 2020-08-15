@@ -3,6 +3,8 @@
 	// inclusion de archivos a codigo php, otra opcion para llamar el archivo es usando require
 	include "./array_ascii.php";  
 
+	// Funciones de string a binario
+
 	function separarLetras( $palabra= "" ){
 		
 		// echo strlen( $palabra ); Para obtener longitud del texto
@@ -56,12 +58,57 @@
 		}
 	}
 
-	// ejecucion automatica
-	echo "\nBienvenido a la calculadora binaria \n\n";
 
-	echo "¿Que desea convertir? \n\n";
+	// Funciones de binario a string
+
+	function binarioaString($valorBinario){
+
+		$exponente= 0;
+		$valor= 0;
+
+		for ($contador= strlen($valorBinario)-1; $contador >= 0; $contador--) { 
+			$digito = (int) substr($valorBinario, $contador, 1);
+
+			if ($digito == 1) {
+				$valor= $valor + ( pow(2, $exponente) );
+			}
+			$exponente++;	
+		}
+		return $valor;
+
+		
+	}
+
+	function validarBinario($valorBinario= ""){
+		global $arrayAscii;
+
+		$patron = "/^[0-1]+$/";
+
+		if ( preg_match($patron, $valorBinario) > 0 && strlen ($valorBinario) == 7 ) {
+    		//Si llega aqui el valor es booleano
+			
+			$decimal= binarioaString($valorBinario);
+
+			foreach ( $arrayAscii as $clave => $valor) {
+				if ($decimal == $valor) {
+					echo "$clave \n";
+					break;
+				}
+			}
+
+			} else {
+    		echo "El valor no es binario\n";
+
+		}
+	}
+
+
+	// ejecucion automatica
+	echo "Bienvenido a la calculadora binaria \n";
+
+	echo "¿Que desea convertir? \n";
 	echo "1.- Convertir a binario \n";
-	echo "2.- Convertir de binario a caracter \n\n";
+	echo "2.- Convertir de binario a caracter \n";
 
 	$opcion= (int) readline("Ingrese una opcion: ");
 
@@ -71,10 +118,12 @@
 	    case 1:
 	    	$palabra= readline("Ingrese la palabra: ");
 	        separarLetras ($palabra);
-	        echo "\n$binario\n\n";
+	        echo "$binario\n";
 	        break;
 	    case 2:
-	        echo "De binario a caracter";
+	    	$valorBinario= readline("Ingrese el codigo binario: ");
+	    	validarBinario($valorBinario);
+	    	echo $valorBinario;
 	        break;
     	default:
     		echo "La opcion no es valida";
