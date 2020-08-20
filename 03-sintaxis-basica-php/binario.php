@@ -82,10 +82,11 @@
 	function validarBinario($valorBinario= ""){
 		global $arrayAscii;
 
+		// Variable en la que se definen expresiones regulares
 		$patron = "/^[0-1]+$/";
 
 		if ( preg_match($patron, $valorBinario) > 0 && strlen ($valorBinario) == 7 ) {
-    		//Si llega aqui el valor es booleano
+    		// Si llega aqui el valor es booleano
 			
 			$decimal= binarioaString($valorBinario);
 

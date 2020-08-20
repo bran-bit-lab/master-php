@@ -2,6 +2,9 @@
 <?php 
 
 	echo "hola mundo php";
+	echo "<br/>";
 
+	$numero= !;
+	var_dump($numero);
 
 ?>
