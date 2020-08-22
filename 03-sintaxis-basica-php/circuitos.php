@@ -5,6 +5,7 @@
 		<title>Calculadora de Circuitos Electricos</title>
 	</head>
 	<body>
+		
 		<h1>Bienvenido a la Calculadora de circuitos</h1>
 		<h2>Circuito en Serie</h2>
 
