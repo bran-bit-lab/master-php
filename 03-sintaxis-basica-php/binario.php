@@ -80,24 +80,40 @@
 	}
 
 	function validarBinario($valorBinario= ""){
+		
 		global $arrayAscii;
 
 		// Variable en la que se definen expresiones regulares
 		$patron = "/^[0-1]+$/";
 
-		if ( preg_match($patron, $valorBinario) > 0 && strlen ($valorBinario) == 7 ) {
-    		// Si llega aqui el valor es booleano
+		if ( preg_match($patron, $valorBinario) > 0 ) {
+    		
+    		// Si llega aqui el valor es binario
 			
-			$decimal= binarioaString($valorBinario);
+			for ($contador=0; $contador < strlen($valorBinario); $contador += 7  ) { 
+				
+				$seccionBinaria= substr($valorBinario, $contador, 7);
 
-			foreach ( $arrayAscii as $clave => $valor) {
-				if ($decimal == $valor) {
-					echo "$clave \n";
-					break;
+				$decimal= binarioaString($seccionBinaria);
+
+				foreach ( $arrayAscii as $clave => $valor) {
+					
+					if ($decimal == $valor) {
+						
+						echo "$clave" . " ";
+					
+						break;
 				}
+
+				echo "\n";
 			}
 
-			} else {
+			
+
+			
+			}
+
+		} else {
     		echo "El valor no es binario\n";
 
 		}
@@ -118,13 +134,12 @@
 	switch ($opcion) {
 	    case 1:
 	    	$palabra= readline("Ingrese la palabra: ");
-	        separarLetras ($palabra);
+	        separarLetras($palabra);
 	        echo "$binario\n";
 	        break;
 	    case 2:
 	    	$valorBinario= readline("Ingrese el codigo binario: ");
 	    	validarBinario($valorBinario);
-	    	echo $valorBinario;
 	        break;
     	default:
     		echo "La opcion no es valida";
