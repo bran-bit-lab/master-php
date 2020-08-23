@@ -39,7 +39,7 @@
 		global $arrayAscii;
 		global $binario;
 		
-		$string = "";
+		$cadena = "";
 
 		foreach ( $arrayAscii as $clave => $valor ) {
 			
@@ -47,16 +47,16 @@
 				
 				while ($valor > 1) {
 					$numero= $valor % 2;
-					$string= $string. $numero;
+					$cadena= $cadena. $numero;
 					$valor= $valor / 2;
 				}
 
 				// bucle inverso para obtener el binario
 
-				$contador = strlen( $string ) - 1; 
+				$contador = strlen( $cadena ) - 1; 
 
 				while ($contador >= 0){
-					$binario .= substr( $string, $contador, 1);
+					$binario .= substr( $cadena, $contador, 1);
 					
 					if ($contador == 0) {
 						$binario.= " ";
@@ -75,7 +75,7 @@
 
 	// Funciones de binario a string
 
-	function binarioaDecimal($valorBinario){
+	function binarioaDecimal( $valorBinario ){
 
 		$exponente= 0;
 		$valor= 0;
