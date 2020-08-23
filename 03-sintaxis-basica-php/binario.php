@@ -130,7 +130,7 @@
 
 	// Main.php
 
-	$app = true; // valor bucle centinela
+	$app= true; // valor bucle centinela
 
 	echo "Bienvenido a la calculadora binaria \n";
 
@@ -164,7 +164,7 @@
 
 		    case 3:
 		    	// cierre del app.
-		    	$app = false;
+		    	$app= false;
 		    	break;
 
 	    	default:
