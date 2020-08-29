@@ -34,17 +34,23 @@
 
 	if ( count( $_GET ) > 0 ) {
 
-		if (isset($_GET['resistenciaR1']) && isset($_GET['resistenciaR2']) && isset($_GET['resistenciaR3'])) {
+		if (!empty($_GET['resistenciaR1']) && !empty($_GET['resistenciaR2']) && !empty($_GET['resistenciaR3'])) {
 			$rT = calcularOhms();				
 		}
 
-		if (isset($_GET['voltageR1']) && isset($_GET['voltageR2']) && isset($_GET['voltageR3'])) {
+		if (!empty($_GET['voltageR1']) && !empty($_GET['voltageR2']) && !empty($_GET['voltageR3'])) {
 
 			$vT = calcularVolts();
 		} 
 
-		if ( isset($vT) && isset($rT) ) {
-			$iT = ($rT * $vT);
+		if ($rT <= 0) {
+			$iT = $vT;
+		}else{
+			$iT =  $vT / $rT;
+		}
+
+		if ( isset($_GET['intensidadTotal']) ){
+			echo "intensidad Total";
 		}
 
 	} else {

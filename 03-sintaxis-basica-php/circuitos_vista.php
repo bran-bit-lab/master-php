@@ -22,17 +22,17 @@
 
 					<p>
 					<label for="resistenciaR1">Resistencia de R1 en ohms: </label>
-					<input type="text" name="resistenciaR1" placeholder="escribe el valor de R1"/>
+					<input type="text" name="resistenciaR1" />
 					<p/>
 
 					<p>
 					<label for="resistenciaR2">Resistencia de R2 en ohms: </label>
-					<input type="text" name="resistenciaR2" placeholder="escribe el valor de R2"/>
+					<input type="text" name="resistenciaR2" />
 					<p/>
 
 					<p>
 					<label for="resistenciaR3">Resistencia de R3 en ohms: </label>
-					<input type="text" name="resistenciaR3" placeholder="escribe el valor de R3"/>
+					<input type="text" name="resistenciaR3" />
 					<p/>
 
 					<p>
@@ -50,17 +50,17 @@
 					<h2>Calcular voltios:</h2>
 					<p>
 					<label for="voltageR1">Voltage en R1 en voltios: </label>
-					<input type="text" name="voltageR1" placeholder="escribe el voltage de R1"/>
+					<input type="text" name="voltageR1" />
 					<p/>
 
 					<p>
 					<label for="voltageR2">Voltage en R2 en voltios: </label>
-					<input type="text" name="voltageR2" placeholder="escribe el voltage de R2"/>
+					<input type="text" name="voltageR2" />
 					<p/>
 
 					<p>
 					<label for="voltageR3">Voltage en R3 en voltios: </label>
-					<input type="text" name="voltageR3" placeholder="escribe el valor de R3"/>
+					<input type="text" name="voltageR3" />
 					<p/>
 
 					<p>
@@ -75,7 +75,7 @@
 			<div class="fila">
 				<div>
 					<p>
-					<label for="voltatgeR3">Intensidad en Amperios: </label>
+					<label for="intensidadTotal">Intensidad en Amperios: </label>
 					<?php echo $htmlAmpers; ?>
 					<p/>
 				</div>
