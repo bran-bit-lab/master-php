@@ -12,7 +12,6 @@
 		<div class="center">
 			<img src="imagenes-sintaxis-basica/circuito_serie1.jpeg" alt="circuito"/>
 		</div>
-		
 			<!-- form- resistencia -->
 			<form action="circuitos_controlador.php" method="GET">
 
@@ -41,8 +40,7 @@
 
 					<p>
 					<label for="resistenciaTotal"> Resistencia total en ohms: </label>
-					<!--Renderizado de php-html-->
-					<?php echo $htmlOhms; ?>
+					<input type="text" readonly name="resistenciaTotal" value="<?= $rT ?>" />
 					<p/>
 					
 				</div>
@@ -68,7 +66,7 @@
 
 					<p>
 					<label for="voltageTotal"> Voltage en total en voltios: </label>
-					<?php echo $htmlVolts; ?>
+					<input type="text" readonly name="voltageTotal" value="<?= $vT ?>" />'
 					<p/>
 				</div>
 			</div>
@@ -76,11 +74,12 @@
 				<div>
 					<p>
 					<label for="intensidadTotal">Intensidad en Amperios: </label>
-					<?php echo $htmlAmpers; ?>
+					<input type="text" name="intensidadTotal" value="<?= $iT ?>" />
 					<p/>
 				</div>
 				<div>
 					<input type="submit" value="Procesar"/>
+					<input type="reset" value="limpiar">
 				</div>
 			</div>
 			<div>
