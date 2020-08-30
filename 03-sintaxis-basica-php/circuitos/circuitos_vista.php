@@ -143,7 +143,7 @@
 
 							<p>
 							<label for="voltageTotal"> Voltage en total en voltios: </label>
-							<input type="text" readonly name="voltageTotal" value="<?= $vT ?>" />'
+							<input type="text" readonly name="voltageTotal" value="<?= $vT ?>" />
 							<p/>
 						</div>
 
