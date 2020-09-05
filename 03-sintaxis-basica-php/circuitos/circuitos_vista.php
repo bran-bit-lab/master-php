@@ -26,51 +26,45 @@
 		<header>
 			<div class="d-flex-c-c">
 				<h3 class="text-center" style="margin: 0">Bienvenido a la Calculadora de circuitos</h3>
-				<h4 class="text-center">Leyes de OHM</h4>
+				<h4 class="text-center">Ley de OHM</h4>
 			</div>
 		</header>
 
 		<div class="mt-2">
 			<div class="container">
 				<div class="row mt-2">
-					<h4 class="subtitle">Leyes de OHM</h4>
+					<div class="text">En la ley de Ohm se cumplen los 3 parametros electricos y es aplicable en circuitos RLC, resistencia, bobina (inductancia), y capacitancia o conductores.</div>
 					<div class="col s12 m4">
 						<div class="text-center cont-img">
-							<img src="https://via.placeholder.com/150" class="responsive-img" alt="">
+							<img src="imagenes-sintaxis-basica/resistencia.png" class="responsive-img" alt="formula para hallar la resistencia">
 						</div>
 						<p class="text-justify">
-							descripcion de formula + img <br> <br>
-
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero modi nobis reprehenderit excepturi laboriosam dignissimos odit sint tempore laborum sed.
+							La resistencia total del circuito es la sumatoria de todos sus valores de resistencia. RT = R1 + R2 + R3
 						</p>
 					</div>
 					<div class="col s12 m4">
 						<div class="text-center cont-img">
-							<img src="https://via.placeholder.com/150" class="responsive-img" alt="">
+							<img src="imagenes-sintaxis-basica/corriente.png" class="responsive-img" alt="formula para hallar la corriente">
 						</div>
 						<p class="text-justify">
-							descripcion de formula + img <br> <br>
-
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero modi nobis reprehenderit excepturi laboriosam dignissimos odit sint tempore laborum sed.
+							En un circuito en serie la corriente siempe es la misma. IT = I							
 						</p>
 					</div>
 					<div class="col s12 m4">
 						<div class="text-center cont-img">
-							<img src="https://via.placeholder.com/150" class="responsive-img" alt="">
+							<img src="imagenes-sintaxis-basica/voltage.png" class="responsive-img" alt="formula para hallar el voltage">
 						</div>
 						<p class="text-justify">
-							descripcion de formula + img <br> <br>
-
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero modi nobis reprehenderit excepturi laboriosam dignissimos odit sint tempore laborum sed.
+							En un circuito en serie la diferencia de potencial de cada elemento en total es igual a su fuente de voltage. E = VR1 + VR2 + VR3
 						</p>
 					</div>
 				</div>
 				<h4 class="subtitle">Circuito en Serie</h4>
 				<article class="text-justify">
 
-					descripcion de circuitos en serie <br> <br>
+					Caracteristicas <br> <br>
 
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi laboriosam, repudiandae magni quasi, et dignissimos voluptatibus doloremque eligendi repellat odit, deleniti itaque, corporis? Consequuntur aspernatur harum, at veniam, accusamus aliquid excepturi quasi culpa, natus laboriosam officiis nemo animi repellat, earum laudantium fugiat minus expedita. Dolores repellendus nisi aliquam tempora totam!
+					En un circuito en serie los elementos (generadores, resistencias, condensadores, inductores, interruptores, entre otros)  estan dispuestos uno a continuacion del otro, de tal forma que el terminal este conectado con el siguiente elmento.
 
 				</article>
 
@@ -79,7 +73,7 @@
 				</div>
 
 				<p>
-					Colocar instrucciones de uso del formulario			
+					El formulario permite la solucion a su minima expresion de un circuito en serie de un maximo de 3 reistencias aplicando la ley de Ohm.		
 				</p>
 
 				<?php if ( $error ): ?>
