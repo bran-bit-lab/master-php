@@ -120,14 +120,13 @@
 		//get es usado para retornar atributos de clases privadas
 		public function getGenerarTraza(){
 
-			
 		}
 
 		public function getEstadodelRobot(){
-			echo $this->id;
-			echo $this->nombre;
-			echo $this->encendido;
-			echo $this->movimiento;
+			echo $this->id ."\n";
+			echo $this->nombre . "\n";
+			echo $this->encendido . "\n";
+			echo $this->movimiento . "\n";
 		}
 
 		
@@ -140,7 +139,7 @@
 
 		echo $robot1->avanzar();
 
-		echo $robot1->girar();
+		echo $robot1->girar("izq");
 
 		$robot1->getEstadodelRobot();
 

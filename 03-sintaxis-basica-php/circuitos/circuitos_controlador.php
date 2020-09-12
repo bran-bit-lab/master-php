@@ -98,8 +98,8 @@
 		) 
 		&&( 
 			empty($_GET['voltageR1']) &&
-		  empty($_GET['voltageR2']) &&
-		  empty($_GET['voltageR3']) 
+		  	empty($_GET['voltageR2']) &&
+		  	empty($_GET['voltageR3']) 
 		)
 		&&(
 			!empty($_GET['intensidadTotal']) 
