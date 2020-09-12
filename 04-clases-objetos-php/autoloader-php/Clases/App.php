@@ -78,21 +78,21 @@ class App {
 	public function help() {
 		
 		// sintaxis heredoc
-		echo <<<HELP
-		
-		Esta es una aplicacion con php, es un script
-		que permite crear perfiles y calcular su sueldo anual.
+echo <<<HELP
 
-		Argumentos:
+Esta es una aplicacion con php, es un script
+que permite crear perfiles y calcular su sueldo anual.
 
-		--help\t\t\tmuestra la ayuda disponible por la aplicación.
-		--nombre="valor"\tinstancia el nombre de la persona.
-		--apellido="valor"\tinstancia el apellido de la persona.
-		--profesion="valor"\tinstancia la profesion de la persona.
-		--sueldo="valor"\tsueldo mensual\n
+Argumentos:
 
-		Autor: Gabriel Martinez: gabmart1995\n 
+--help\t\t\tmuestra la ayuda disponible por la aplicación.
+--nombre="valor"\tinstancia el nombre de la persona.
+--apellido="valor"\tinstancia el apellido de la persona.
+--profesion="valor"\tinstancia la profesion de la persona.
+--sueldo="valor"\tsueldo mensual\n
 
-		HELP;
+Autor: Gabriel Martinez: gabmart1995\n 
+
+HELP;
 	}
 }

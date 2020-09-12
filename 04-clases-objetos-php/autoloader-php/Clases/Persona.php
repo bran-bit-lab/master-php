@@ -27,16 +27,16 @@ class Persona {
 	}
 
 	public function getProfile() {
-		return <<<USER
-			
-		Datos del perfil del usuario:
+return <<<USER
+	
+Datos del perfil del usuario:
 
-		nombre: {$this->nombre}
-		apellido: {$this->apellido}
-		profesion: {$this->profesion}
-		sueldo: {$this->sueldo}$\n
+nombre: {$this->nombre}
+apellido: {$this->apellido}
+profesion: {$this->profesion}
+sueldo: {$this->sueldo}$\n
 
-		USER;
+USER;
 	}
 
 	public function calcularSueldoAnual() {
