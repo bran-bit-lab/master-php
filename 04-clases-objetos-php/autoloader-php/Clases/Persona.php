@@ -1,6 +1,7 @@
 <?php  
 
 // el namespace es el nombre de la carpeta que contiene el archivo.
+
 namespace Clases;
 
 class Persona {
@@ -20,41 +21,46 @@ class Persona {
 		$this->nombre = $nombre;
 		$this->apellido = $apellido;
 		$this->profesion = $profesion;
-		$this->sueldo = $sueldo;
+		$this->sueldo = ( int ) $sueldo;
 
-		echo $this-> getProfile();
-		echo $this->calcularSueldoAnual();
+		echo $this->obtenerPerfil();
+
+		if ( strlen( $sueldo ) > 0 ) {
+			echo $this->calcularSueldoAnual();
+		}
 	}
 
-	public function getProfile() {
+	public function obtenerPerfil() {
+
 return <<<USER
 	
 Datos del perfil del usuario:
 
 nombre: {$this->nombre}
 apellido: {$this->apellido}
-profesion: {$this->profesion}
+profesión: {$this->profesion}
 sueldo: {$this->sueldo}$\n
 
 USER;
+
 	}
 
 	public function calcularSueldoAnual() {
 
-		$option = readline('¿Desea calcular el sueldo anual? [y/n]: ');
+		$opcion = readline('¿Desea calcular el sueldo anual? [y/n]: ');
 
-		if ( $option == 'y' ) {
+		if ( $opcion == 'y' ) {
 
 			$sueldoAnual = $this->sueldo * 12;
-			return "El sueldo anual de $this->nombre $this->apellido es: $sueldoAnual\n\n";
+			return "El sueldo anual de $this->nombre $this->apellido es: $sueldoAnual$\n\n";
 
-		} else if ( $option == 'n' ) {
+		} else if ( $opcion == 'n' ) {
 
 			return "No se calculo sueldo\n\n";
 
 		} else {
 
-			return "\e[1;37;41m Opcion no válida \e[0m\n\n";
+			return "Opcion no válida\n\n";
 		}
 
 	}
