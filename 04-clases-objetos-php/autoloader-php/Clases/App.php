@@ -63,7 +63,7 @@ class App {
 
 	private function validarDatos( $cadena, $propiedad, $patron ) {
 
-		if ( preg_match( $patron, $cadena ) && strlen( $cadena ) > 0 ) {
+		if ( preg_match( $patron, $cadena ) && !empty( $cadena ) ) {
 			return $cadena;
 		}
 

@@ -9,14 +9,14 @@ class Persona {
 	public $nombre = '';
 	public $apellido = '';
 	public $profesion = '';
-	public $sueldo = '';
+	public $sueldo = 0;
 
 
 	public function __construct( 
 		$nombre = '', 
 		$apellido = '', 
 		$profesion = '',
-		$sueldo = ''
+		$sueldo = 0
 	) {
 		$this->nombre = $nombre;
 		$this->apellido = $apellido;
