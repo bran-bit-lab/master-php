@@ -1,6 +1,6 @@
 <?php 
 
-define( "load", dirname(__FILE__) );
+define( "load", dirname( __FILE__ ) );
 
 define( "ds", DIRECTORY_SEPARATOR );
 	
@@ -21,17 +21,17 @@ function cargador( $archivoClase ){
 
 
 	// Windows MS-DOS
-	$path = load . ds . $archivoClase . ".php" ;
+	// $path = load . ds . $archivoClase . ".php" ;
+
+	$path = load.ds.str_replace( "\\", ds, $archivoClase ).'.php';
 	
 	//var_dump($path);
 	
-	if ( file_exists($path) ) {
-		require_once $path;
-	
-	} else {
+	if ( !file_exists( $path ) ) {
 		throw new Exception( "No se encontro el archivo" );
-		die();
-	}
+	} 
+	
+	require_once $path;
 }
 
 spl_autoload_register( "cargador" );

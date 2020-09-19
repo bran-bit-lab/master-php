@@ -5,6 +5,3 @@
 	use Clases\Robot;
 	
 	$robot = new Robot;
-
-	
- ?>
