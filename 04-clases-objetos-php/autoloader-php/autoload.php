@@ -4,7 +4,7 @@
 	CARGADOR DE CLASES DINAMICO AUTOLOADER
 
 	este script se encarga de cargar las clases dentro de 
-	un directorio espcedificado cada vez que haya una instanciacion
+	un directorio espcecificado cada vez que haya una instanciacion
 	de clase. es mucho mas limpio que usar include o require
 
 */

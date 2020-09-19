@@ -18,8 +18,7 @@ define("ds", DIRECTORY_SEPARATOR);
 			throw new Exception("No se encontro el archivo");
 			die();
 		}
-}
-
+	}
 	spl_autoload_register("cargador");
 		
 /*spl_autoload_register: funcion que se mantiene escuchando hasta que se utiliza el namespace y use, conocido por ser un escuchador de eventos
@@ -27,8 +26,8 @@ define("ds", DIRECTORY_SEPARATOR);
 	//cargador("Clases\\robot_model");	
 
 /*
-el primer bakslage(\) indica el primer espae de linea
-el segundo bakslage(\) implica el carcter para reemplazarlo
+el primer bakslage(\) indica el primer espacio de linea
+el segundo bakslage(\) implica el caracter para reemplazarlo
 */
 	//$path = str_replace("\\", ds, $path);
 

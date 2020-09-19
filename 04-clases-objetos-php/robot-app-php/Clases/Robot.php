@@ -39,7 +39,7 @@
 				}
 			}
 			
-			$this->getEstadodelRobot();
+			//$this->getEstadodelRobot();
 		}
 
 	public function encender(){
@@ -50,7 +50,7 @@
 		} else {
 			echo "el robot ya esta encendido";
 		}
-
+	
 	}
 	
 	public function apagar(){
@@ -67,42 +67,49 @@
 	
 	public function girar( $direccion = "izq" | "der" ){
 
-		if ($direccion == "izq") {
+		if ($direccion == "izq" && $this->encendido == true) {
 			echo "girando a la izquierda \n";
-		}else if ($direccion == "der"){
+		}else if ($direccion == "der" && $this->encendido == true){
 			echo "girando a la derecha \n";
-		}else{
-			echo "dar direccion al robot \n";
+		}else if ($this->encendido == false){
+			echo "debe encender el robot el robot \n";
+		}
+		else{
+			echo "Dar direccion al robot \n";
 		}
 
 	}
 	
 	public function avanzar(){
 			
-			if ($this->movimiento == "estatico" && $this->encendido == true) {
-				echo "avanza \n";
-				$this->movimiento= "avanza";
-			}elseif($this->encendido == false){
-				echo "El robot esta apagado \n";
-			}else{
-				echo "El robot esta en movimiento \n";
-			}
-			
-
-	}
+		if ($this->movimiento == "estatico" && $this->encendido == true) {
+			echo "avanza \n";
+			$this->movimiento= "avanzando";
+		}elseif($this->encendido == false){
+			echo "El robot esta apagado \n";
+		}elseif ($this->movimiento == "retrocede") {
+			$this->detener();
+			echo "avanzando";
+			$this->movimiento= "avanzando";
+		}
+		else{
+			echo "El robot esta en movimiento \n";
+		}
+		
+}
 	
 	public function retroceder(){
 
-			if ($this->encendido == true && $this->movimiento == "estatico") {
-				echo "Retrocediendo \n";
-				$this->movimiento= "retrocede";
-			}elseif ($this->movimiento == "avanza" ) {
-				$this->detener();
-				echo "Retrocediendo \n";
-				$this->movimiento= "retrocede";
-			}else{
-				echo "Ya esta retrocediendo \n";
-			}
+		if ($this->encendido == true && $this->movimiento == "estatico") {
+			echo "Retrocediendo \n";
+			$this->movimiento= "retrocede";
+		}elseif ($this->movimiento == "avanzando" ) {
+			$this->detener();
+			echo "Retrocediendo \n";
+			$this->movimiento= "retrocede";
+		}else{
+			echo "Ya esta retrocediendo \n";
+		}
 
 	}
 
@@ -125,7 +132,7 @@
 
 	//private indica que no se puede acceder al metodo de manera global se requie usar get y set para acceder 
 	private function generarTraza(){
-		echo "traza";
+		echo $this->movimiento . "\n";
 
 	}
 
@@ -141,9 +148,12 @@
 	}
 
 	public function getEstadodelRobot(){
-		echo $this->id ."\n";
-		echo $this->nombre . "\n";
-		echo $this->encendido . "\n";
+		if ($this->encendido == true) {
+			echo "El robot esta encendido y ";
+		}else{
+			echo "El robot esta apagado \n";
+		}
+		
 		echo $this->movimiento . "\n";
 	}
 
@@ -166,40 +176,8 @@ Autor: Brandon Silva bran-bit-lab.
 
 HELP;
 	}
+
 }
 
-		//$robot1= new Robot("bumblebee");
-
-		/*
-		echo $robot1->encender();
-
-		echo $robot1->avanzar();
-
-		echo $robot1->girar("izq");
-
-		$robot1->getEstadodelRobot();
-		*/
 		
-
-		
-
-		/*$ultimaLinea = system( './Cuenta', $retval );
-
-			echo $ultimaLinea;
-
-			echo $retval;*/
-
-
-
-		//var_dump($robot1);
-
-
-
-
-
-
-
-
-
-
  ?>
