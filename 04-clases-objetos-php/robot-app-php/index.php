@@ -2,12 +2,15 @@
 
 	require_once "autoload.php";
 
-	use Clases\Robot;
+	use Clases\App;
 	
-	$robot = new Robot;
-<<<<<<< HEAD
+	$app = new App;
+
 	
-	echo $robot->encender();
+
+
+	
+	/*echo $robot->encender();
 
 	echo $robot->avanzar();
 	
@@ -18,7 +21,5 @@
 	$robot->setGenerarTraza();
 	echo $robot->getGenerarTraza();
  	
- 	echo $robot->getestadodelrobot();
- ?>
-=======
->>>>>>> 9f2492581da3c36b026c8b09773f83c256d9da67
+ 	echo $robot->getestadodelrobot();*/
+ 
