@@ -5,3 +5,10 @@ Creacion del robot
 El robot fue encendido, 
 se apaga el robot 
 El robot fue encendido, 
+Creacion del robot
+El robot fue encendido, 
+el robot avanza 
+El robot retrocede 
+El robot gira a la izquierda 
+El robot gira a la derecha
+se apaga el robot 

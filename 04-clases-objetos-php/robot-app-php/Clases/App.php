@@ -154,22 +154,27 @@ MENU;
 
 				case 3:
 					$this->robot->avanzar();
+					$this->generarTraza("el robot avanza ");
 					break;
 
 				case 4:
 					$this->robot->detener();
+					$this->generarTraza("El robot se detiene ");
 					break;
 
 				case 5:
 					$this->robot->retroceder();
+					$this->generarTraza("El robot retrocede ");
 					break;
 
 				case 6:
 					$this->robot->girar("izq");
+					$this->generarTraza("El robot gira a la izquierda ");
 					break;
 
 				case 7:
 					$this->robot->girar("der");
+					$this->generarTraza("El robot gira a la derecha");
 					break;
 				
 				case 8:
