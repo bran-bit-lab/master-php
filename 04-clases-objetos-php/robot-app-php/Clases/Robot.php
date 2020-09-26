@@ -20,7 +20,8 @@ class Robot {
 
 	public function encender(){
 		
-		if ( $this->encendido == false ) {
+		if ($this->encendido == false) {
+			
 			echo "encendido \n";
 			$this->encendido = true;
 
@@ -33,7 +34,8 @@ class Robot {
 	
 	public function apagar(){
 
-		if ( $this->encendido == true ) {
+		if ($this->encendido == true) {
+			
 			echo "apagado \n";
 			$this->encendido = false;
 			 
@@ -46,16 +48,16 @@ class Robot {
 	
 	public function girar( $direccion = "izq" | "der" ){
 
-		if ( $direccion == "izq" && $this->encendido == true ) {
+		if ($direccion == "izq" && $this->encendido == true) {
 			echo "girando a la izquierda \n";
 
-		} else if ( $direccion == "der" && $this->encendido == true ){
+		} else if ($direccion == "der" && $this->encendido == true){
 			echo "girando a la derecha \n";
 
-		} else if ( $this->encendido == false ){
-			echo "debe encender el robot el robot \n";
+		} else if ($this->encendido == false){
+			echo "debe encender el robot \n";
 		
-		}else {
+		} else {
 			echo "Dar direccion al robot \n";
 
 		}
@@ -63,20 +65,24 @@ class Robot {
 	
 	public function avanzar(){
 			
-		if ( $this->movimiento == "estatico" && $this->encendido == true ) {
+		if ($this->movimiento == "estatico" && $this->encendido == true) {
+			
 			echo "avanza \n";
 			$this->movimiento= "avanzando";
 
 		} elseif ($this->encendido == false){
+			
 			echo "El robot esta apagado \n";
 		
 		} elseif ($this->movimiento == "retrocede") {
+			
 			$this->detener();
-			echo "avanzando \n";
 			$this->movimiento= "avanzando";
+			echo "avanzando \n";
 		
 		} else {
 			echo "El robot esta en movimiento \n";
+
 		}
 		
 }
@@ -84,14 +90,19 @@ class Robot {
 	public function retroceder(){
 
 		if ($this->encendido == true && $this->movimiento == "estatico") {
+			
 			echo "Retrocediendo \n";
 			$this->movimiento= "retrocede";
-		}elseif ($this->movimiento == "avanzando" ) {
+
+		} elseif ($this->movimiento == "avanzando") {
+			
 			$this->detener();
 			echo "Retrocediendo \n";
 			$this->movimiento= "retrocede";
-		}else{
+
+		} else {
 			echo "Ya esta retrocediendo \n";
+
 		}
 
 	}
@@ -99,29 +110,32 @@ class Robot {
 	public function detener(){
 
 		if ( $this->movimiento == "avanza" && $this->encendido == true ) {
+			
 			echo "se detiene \n";
 			$this->movimiento = "estatico";
 		
 		} else if ( $this->encendido == false ) {
+			
 			echo "El robot esta apagado \n";
 		
 		} else if ( $this->movimiento == "retrocede" ) {
+			
 			echo "El robot se detuvo en retroceso \n";
 			$this->movimiento = "estatico";
 		
 		} else {
 			echo "El robot no esta en movimiento \n";
+
 		}
 
 	}
 
-	
-
 	public function getEstadodelRobot(){
 		
-		if ($this->encendido == true) {
+		if ( $this->encendido ) {
 			echo "El robot esta encendido y " . $this->movimiento . "\n";
-		}else{
+
+		} else {
 			echo "El robot esta apagado \n";
 		}
 	}

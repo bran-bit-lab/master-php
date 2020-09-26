@@ -8,9 +8,7 @@ use Clases\Robot;
 class App {
 
 	private $robot = null;
-	//instancia de array basico
-	private $traza = [];
-
+	private $traza = [];  //instancia de array basico
 	private $app=true;
 
 	//el constructor se ejecuta automaticamente al instanciar la clase
@@ -19,8 +17,8 @@ class App {
 		global $argv;
 		global $argc;
 
-		$nombre = '';
-		$id = '';
+		$nombre= '';
+		$id= '';
 
 		//$argv recoge todos las palabras sepaadas en un espacio , si estan entre comillas "" va a tomar toda la frase, despues de escribir php
 		//$argc es la cantidad de parametros asignados a $argv
@@ -55,6 +53,7 @@ class App {
 		}
 		
 		$this->robot = new Robot( $nombre, $id );
+
 		$this->generarTraza("Creacion del robot");
 
 		$this->mainloop();
@@ -62,17 +61,17 @@ class App {
 
 	// private indica que no se puede acceder al metodo de manera global se requie usar get y set para acceder 
 	private function generarTraza( $log ){
+		
 		array_push( $this->traza, $log );
 		$this->escribirTraza( $log );
 	}
 
 	// set es la funcion usada para ingresar y modificar atributos o acceder metodos privados
-	public function escribirTraza($log) {
+	public function escribirTraza( $log ) {
 
 		$path = __DIR__. '/../logs/logs.txt';
 
-		$file= fopen( $path, "a+");
-		//escritura en el archivo
+		$file= fopen( $path, "a+");  //escritura en el archivo
 		
 		fwrite($file, $log. "\n");
 
@@ -178,7 +177,7 @@ MENU;
 					break;
 
 				case 9:
-					print_r ($this->getGenerarTraza()) . "\n";
+					print_r($this->getGenerarTraza()) . "\n";
 					break;
 
 				default:
@@ -186,14 +185,11 @@ MENU;
 					break;
 			}
 
-		} while ($this->app == true);
+		} while ($this->app);
 
 	}
 
 }
 
-
-
-
-	// validacion secundaria PHP  Ejemplo
-	// $encendido = $this->encendido ? 'Encendido' : 'Apagado';
+// validacion secundaria PHP  Ejemplo
+// $encendido = $this->encendido == true ? 'Encendido' : 'Apagado';

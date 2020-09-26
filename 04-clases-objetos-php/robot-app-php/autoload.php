@@ -4,7 +4,7 @@ define( "load", dirname( __FILE__ ) );
 
 define( "ds", DIRECTORY_SEPARATOR );
 	
-//funciones asincronas
+// funciones asincronas
 function cargador( $archivoClase ){
 	
 	/* 	
