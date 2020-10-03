@@ -76,10 +76,65 @@
 			echo "creacion de tabla exitosa";
 		}
 
+		public function insertarDatos(){
+
+			$sql= $this->insertar(); 
+
+			$this->conectar();
+
+			$respuesta = $this->pdo->prepare($sql);
+
+			if ($respuesta == false) {
+				echo "error en la consulta";
+				return;
+			}
+
+			$respuesta->execute();
+
+		}
+
+		public function actualizarDatos(){
+			
+
+			$sql= $this->actualizar(); 
+
+			$this->conectar();
+
+			$respuesta = $this->pdo->prepare($sql);
+
+			if ($respuesta == false) {
+				echo "error en la consulta";
+				return;
+			}
+
+			$respuesta->execute();
+		
+		}
+
+		public function eliminarDatos(){
+
+			$sql= $this->eliminar(); 
+
+			$this->conectar();
+
+			$respuesta = $this->pdo->prepare($sql);
+
+			if ($respuesta == false) {
+				echo "error en la consulta";
+				return;
+			}
+
+			var_dump( $respuesta->execute() );
+		
+		}
+
 	}
 
 	$base = new Bd;
 	 
-	$base->crearTabla();
+	//$base->crearTabla();
+	$base->eliminarDatos();
 
+	//prepare valida el codigo SQL
+	//execute sentencia recomendada preferible a la sentencia query
  ?>
