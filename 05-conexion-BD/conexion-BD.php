@@ -1,6 +1,9 @@
 <?php 
 
+	include ('.\\sql-trait.php');
+
 	class Bd {
+		use SQL;
 
 		private $dsn = '';
 
@@ -12,8 +15,12 @@
 
 		public function __construct ($filePath = './Ejemplo/config/base-de-datos-prueba.ini'){
 
-			$existencia = parse_ini_file($filePath, true);
+			define( "ds", DIRECTORY_SEPARATOR );
 
+			$filePath = str_replace("/", ds, $filePath);
+
+			$existencia = parse_ini_file($filePath, true);
+			
 			if ($existencia == false) {
 				throw new Exception("No se encontro archivo revisar el path", 1);
 				die();												
@@ -22,6 +29,7 @@
 			$mysqlDriver= $existencia['mysql'];
 			//var_dump($mysqlDriver);
 
+			//conexion mediante PDO::__construct para mas informacion
 			$this->dsn = $mysqlDriver['driver']. ":dbname=" . $mysqlDriver['database'];
 			$this->dsn .= ";host=". $mysqlDriver['host'];
 			// var_dump($this->dsn);
@@ -30,7 +38,7 @@
 			$this->contrasenia = $mysqlDriver["password"];
 
 			echo "soy el constructor";
-
+			
 		}
 
 
@@ -39,7 +47,6 @@
 			try {
 				$this->pdo = new PDO($this->dsn, $this->usuario, $this->contrasenia);
 				echo "conexion a BD exitosa";
-
 			    
 			} catch ( PDOException $error ) {
 			    echo $error->getMessage();
@@ -53,16 +60,12 @@
 
 		public function crearTabla(){
 			
-			$sql= "CREATE TABLE invitado (
-				id int PRIMARY KEY,
-				name char(30),
-				apellido char(30),
-				correo char(30)
-			);";
+			$sql= $this->crear();
 
 			$this->conectar();
 
 			$stmt = $this->pdo->query($sql);
+			//mas info en PDO::query php.net
 
 			if ($stmt == false) {
 				echo "fallo en la ejecucion";
@@ -76,8 +79,7 @@
 	}
 
 	$base = new Bd;
+	 
 	$base->crearTabla();
-
-
 
  ?>
