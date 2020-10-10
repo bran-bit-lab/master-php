@@ -83,7 +83,7 @@
 				<?php endif; ?>
 
 				<!-- form- resistencia -->
-				<form action="circuitos_controlador.php" method="GET">
+				<form action="index.php" method="GET">
 
 
 					<div class="row">
@@ -95,7 +95,7 @@
 							<input type="text" name="resistenciaR1" />
 							<p/>
 
-							<p>?= $rT 
+							<p> 
 							<label for="resistenciaR2">Resistencia de R2 en ohms: </label>
 							<input type="text" name="resistenciaR2" />
 							<p/>
