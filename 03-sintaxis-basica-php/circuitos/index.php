@@ -150,7 +150,7 @@
 		}
 
 		$mensaje = '';
-		$error = false;
+		$error = false;?= $rT 
 	}	
 
 	else if ( count( $_GET ) > 0  ) {

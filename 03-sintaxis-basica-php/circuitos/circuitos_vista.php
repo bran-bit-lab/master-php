@@ -76,7 +76,7 @@
 					El formulario permite la solucion a su minima expresion de un circuito en serie de un maximo de 3 reistencias aplicando la ley de Ohm.		
 				</p>
 
-				<?php if ( $error ): ?>
+				<?php if ( $error==true ): ?>
 					<div class="text-center">
 						<strong style="color: red"><?= $mensaje ?></strong>
 					</div>
@@ -95,7 +95,7 @@
 							<input type="text" name="resistenciaR1" />
 							<p/>
 
-							<p>
+							<p>?= $rT 
 							<label for="resistenciaR2">Resistencia de R2 en ohms: </label>
 							<input type="text" name="resistenciaR2" />
 							<p/>
