@@ -1,8 +1,11 @@
 <?php 
 
-	include ('.\\sql-trait.php');
-
+	namespace MisClases;
+	//la clases nativas como PDO se deben llamar de la siguiente manera para ser encontrada por el autoload
+	use PDO;
+	
 	class Bd {
+
 		use SQL;
 
 		private $dsn = '';
@@ -15,7 +18,8 @@
 
 		public function __construct ($filePath = './Ejemplo/config/base-de-datos-prueba.ini'){
 
-			define( "ds", DIRECTORY_SEPARATOR );
+			//define( "ds", DIRECTORY_SEPARATOR );
+			//el autoload es el primero en cargarse y ya tiene la variable ds definida
 
 			$filePath = str_replace("/", ds, $filePath);
 
@@ -32,7 +36,7 @@
 			//conexion mediante PDO::__construct para mas informacion
 			$this->dsn = $mysqlDriver['driver']. ":dbname=" . $mysqlDriver['database'];
 			$this->dsn .= ";host=". $mysqlDriver['host'];
-			// var_dump($this->dsn);
+			//var_dump($this->dsn);
 
 			$this->usuario = $mysqlDriver["username"];
 			$this->contrasenia = $mysqlDriver["password"];
@@ -44,7 +48,12 @@
 
 		public function conectar(){
 
+
+			//PDO::__construct para mas info en php.net
 			try {
+
+				//var_dump (spl_autoload_unregister("cargador"));
+
 				$this->pdo = new PDO($this->dsn, $this->usuario, $this->contrasenia);
 				echo "conexion a BD exitosa";
 			    
@@ -128,13 +137,29 @@
 		
 		}
 
+		public function setearContador(){
+
+			$sql= $this->resetAutoIncrement(); 
+
+			$this->conectar();
+
+			$respuesta = $this->pdo->prepare($sql);
+
+			if ($respuesta == false) {
+				echo "error en la consulta";
+				return;
+			}
+
+			var_dump( $respuesta->execute() );
+
 	}
 
-	$base = new Bd;
+}
+	//$base = new Bd;
 	 
 	//$base->crearTabla();
-	$base->eliminarDatos();
+	// $base->eliminarDatos();
 
 	//prepare valida el codigo SQL
 	//execute sentencia recomendada preferible a la sentencia query
- ?>
+ ?> 

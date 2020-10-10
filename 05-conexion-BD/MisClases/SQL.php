@@ -2,6 +2,8 @@
 
 	/*el codigo SQL se le asigna(entre comillado) a una variable php para enviar los datos en este caso se retorna el resultado para incrustar los datos a la variable*/
 
+    namespace MisClases;
+
 trait SQL {
     public function crear(/*$nombreTabla, $descripcion*/) {
       
@@ -31,21 +33,28 @@ trait SQL {
 
     	return $sql;
 
-
-
     }
 
     public function eliminar(){
 
-    	$sql= 'DELETE FROM invitado WHERE id = 2;';
+    	$sql= 'DELETE FROM invitado WHERE id = 1;';
     	return $sql;
 
+    }
+
+    public function resetAutoIncrement(){
+
+        $sql = "ALTER TABLE invitado AUTO_INCREMENT=1";
+        return $sql;
     }
 
 }
 
 
-
+/*
+para setear autoincremento usar
+$query = "ALTER TABLE nombreTabla AUTO_INCREMENT=1";
+*/
 
 
 
