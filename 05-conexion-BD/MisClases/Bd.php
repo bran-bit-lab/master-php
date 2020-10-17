@@ -48,12 +48,9 @@
 
 		public function conectar(){
 
-
 			//PDO::__construct para mas info en php.net
 			try {
-
 				//var_dump (spl_autoload_unregister("cargador"));
-
 				$this->pdo = new PDO($this->dsn, $this->usuario, $this->contrasenia);
 				echo "conexion a BD exitosa";
 			    
@@ -70,7 +67,6 @@
 		public function crearTabla(){
 			
 			$sql= $this->crear();
-
 			$this->conectar();
 
 			$stmt = $this->pdo->query($sql);
@@ -81,14 +77,12 @@
 				return;
 			}
 
-			
 			echo "creacion de tabla exitosa";
 		}
 
 		public function insertarDatos(){
 
 			$sql= $this->insertar(); 
-
 			$this->conectar();
 
 			$respuesta = $this->pdo->prepare($sql);
@@ -99,14 +93,12 @@
 			}
 
 			$respuesta->execute();
-
 		}
 
 		public function actualizarDatos(){
 			
 
 			$sql= $this->actualizar(); 
-
 			$this->conectar();
 
 			$respuesta = $this->pdo->prepare($sql);
@@ -117,13 +109,11 @@
 			}
 
 			$respuesta->execute();
-		
 		}
 
 		public function eliminarDatos(){
 
 			$sql= $this->eliminar(); 
-
 			$this->conectar();
 
 			$respuesta = $this->pdo->prepare($sql);
@@ -133,14 +123,12 @@
 				return;
 			}
 
-			var_dump( $respuesta->execute() );
-		
+			$respuesta->execute();
 		}
 
 		public function setearContador(){
 
 			$sql= $this->resetAutoIncrement(); 
-
 			$this->conectar();
 
 			$respuesta = $this->pdo->prepare($sql);
@@ -150,15 +138,14 @@
 				return;
 			}
 
-			var_dump( $respuesta->execute() );
-
+			$respuesta->execute();
 	}
 
 }
 	//$base = new Bd;
 	 
 	//$base->crearTabla();
-	// $base->eliminarDatos();
+	//$base->eliminarDatos();
 
 	//prepare valida el codigo SQL
 	//execute sentencia recomendada preferible a la sentencia query

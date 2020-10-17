@@ -9,7 +9,7 @@ class App {
 
 	private $robot = null;
 	private $traza = [];  //instancia de array basico
-	private $app=true;
+	private $app = true;
 
 	//el constructor se ejecuta automaticamente al instanciar la clase
 	public function __construct() {
@@ -20,15 +20,13 @@ class App {
 		$nombre= '';
 		$id= '';
 
-		//$argv recoge todos las palabras sepaadas en un espacio , si estan entre comillas "" va a tomar toda la frase, despues de escribir php
+		//$argv recoge todos las palabras separadas en un espacio , si estan entre comillas "" va a tomar toda la frase, despues de escribir php
 		//$argc es la cantidad de parametros asignados a $argv
 
-		
 		if ( $argc == 1 ) {
 			return $this->help();
 		}
 		
-
 		foreach ( $argv as $argumento ) {
 
 			$parametros= explode("=", $argumento);
@@ -49,7 +47,6 @@ class App {
 				default:
 					break;
 			}
-
 		}
 		
 		$this->robot = new Robot( $nombre, $id );
@@ -85,7 +82,7 @@ class App {
 	}
 	
 	public function help() {
-
+//sintaxis heredoc
 echo <<<HELP
 
 Esta es una aplicación con php, que permite generar el comportamiento logico de un robot
@@ -96,7 +93,7 @@ Argumentos:
 nombre="valor"		nombre del robot.
 id="valor"		numero identificador el robot.
 help="valor"		muestra ayuda para su control.
-logs="true | false" 			muestra las trazas del robot generado a través de su ciclo de vida.
+logs="true | false" 		muestra las trazas del robot generado a través de su ciclo de vida.
 
 
 - El robot inicia en posición estatico y apagado.
@@ -196,5 +193,7 @@ MENU;
 
 }
 
-// validacion secundaria PHP  Ejemplo
-// $encendido = $this->encendido == true ? 'Encendido' : 'Apagado';
+/*
+Ejemplo de validacion secundaria PHP
+$encendido = $this->encendido == true ? 'Encendido' : 'Apagado';
+*/

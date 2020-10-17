@@ -19,14 +19,11 @@ function cargador( $archivoClase ){
 
 	*/
 
-
 	// Windows MS-DOS
 	// $path = load . ds . $archivoClase . ".php" ;
 
 	$path = load.ds.str_replace( "\\", ds, $archivoClase ).'.php';
-	
-	//var_dump($path);
-	
+		
 	if ( !file_exists( $path ) ) {
 		throw new Exception( "No se encontro el archivo" );
 	} 

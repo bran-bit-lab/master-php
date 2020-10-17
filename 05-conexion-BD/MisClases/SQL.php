@@ -32,14 +32,12 @@ trait SQL {
     	SET name = 'Brian', apellido = 'Sanchez', correo = 'modificacion@prueba.com' WHERE id = 1;";
 
     	return $sql;
-
     }
 
     public function eliminar(){
 
     	$sql= 'DELETE FROM invitado WHERE id = 1;';
     	return $sql;
-
     }
 
     public function resetAutoIncrement(){
