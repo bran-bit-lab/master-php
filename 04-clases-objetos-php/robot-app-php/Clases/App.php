@@ -48,8 +48,10 @@ class App {
 					break;
 			}
 		}
+
 		
-		$this->robot = new Robot( $nombre, $id );
+		
+		$this->robot = new Robot( $id, $nombre );
 
 		$this->generarTraza("Creacion del robot");
 

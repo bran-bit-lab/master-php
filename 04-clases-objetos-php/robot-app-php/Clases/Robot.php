@@ -1,21 +1,33 @@
 <?php 
 	
 namespace Clases;
+use Clases\Bd;
 
 class Robot {
 
 	//atributos
 	public $id= "";
 	public $nombre= "";
+	public $alias= "";
 
+	private $bd= null;
 	private $encendido= false;
 	private $movimiento= "estatico";
 	private $distanciaRecorrida= 0;
 
-	public function __construct( $nombre, $id ){
-		
+	public function __construct( $id, $nombre ){
+
 		$this->id = $id;
 		$this->nombre = $nombre;	
+
+		$datos = array('id' => $this->id,
+					   'nombre' => $this->nombre,
+						'alias' => $this->nombre);
+		
+		$this->bd= new Bd;
+		$this->bd->insertarDatos($datos);
+
+
 	}
 
 	public function encender(){
