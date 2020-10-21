@@ -1,5 +1,6 @@
 <?php
-
+	
+	include 'C:Documents/Archivos/xampp/htdocs/master-php/03-sintaxis-basica-php/circuitos'
 	// Modelos vista controlador
 
 	function sumarOhms(){
@@ -63,7 +64,6 @@
 		empty($_GET['resistenciaR1']) &&  
 		empty($_GET['resistenciaR2']) &&  
 		empty($_GET['resistenciaR3']) 
-
 		) 
 		&&( 
 		 	!empty($_GET['intensidadTotal']) 
@@ -128,17 +128,12 @@
 			empty( $_GET['intensidadTotal'] ) 
 		) 
 		&&( 	
-			!empty($_GET['resistenciaR1']) || 
-			!empty($_GET['resistenciaR2']) || 
-			!empty($_GET['resistenciaR3']) 
+			(!empty($_GET['resistenciaR1']) && !empty($_GET['voltageR1']) ) ||
+			(!empty($_GET['resistenciaR2']) && !empty($_GET['voltageR2']) ) || 
+			(!empty($_GET['resistenciaR3']) && !empty($_GET['voltageR3']) )
 		) 
-		&&( 	
-			!empty($_GET['voltageR1']) || 
-			!empty($_GET['voltageR2']) || 
-			!empty($_GET['voltageR3']) 
-		)
-	) {
 		
+	) {
 		$rT = sumarOhms();
 		$vT = sumarVolts();
 
