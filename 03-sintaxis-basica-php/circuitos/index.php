@@ -1,7 +1,4 @@
 <?php
-	
-	include 'C:Documents/Archivos/xampp/htdocs/master-php/03-sintaxis-basica-php/circuitos'
-	// Modelos vista controlador
 
 	function sumarOhms(){
 
