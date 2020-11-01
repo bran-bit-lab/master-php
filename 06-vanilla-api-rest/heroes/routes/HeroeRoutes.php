@@ -11,28 +11,117 @@ class HeroeRoutes extends Heroe {
 		
 		$requestMethod = $_SERVER['REQUEST_METHOD'];
 
-		if ( $requestMethod == 'GET' ) {
-			echo "peticion get";
-			return;
+		switch ( $requestMethod ) {
+			
+			case 'GET':
+				
+				if ( empty( $this->getParams() ) ) {
+				
+					return $this->showJson( '200 OK', [
+						'ok' => 'true',
+						'heroes' => []
+					]);
+				}
+			
+				return $this->showJson( '200 OK', [
+					'ok' => 'true',
+					'heroe' => ( int ) $this->getParams()
+				]);
+
+
+			case 'POST':
+
+				/* 	
+				*		https://www.php.net/manual/es/wrappers.php.php
+				* 	php://  permite acceder a diferentes secciones y obtener recursos del servidor
+				* 	php://input es un flujo de sólo lectura que permite leer datos del cuerpo de cualquier peticion.
+				*/
+
+				$body = json_decode( file_get_contents('php://input'), true );
+
+				if ( !is_array( $body ) ) {
+					
+					return $this->showJson( '400 Bad Request', [
+						'ok' => 'false',
+						'error' => 'peticion incorrecta'
+					]);
+				}
+
+				return $this->showJson('201 Created', [
+					'ok' => 'true',
+					'heroe' => $body
+				]);
+
+
+			case 'PUT':
+				
+				if ( empty( $this->getParams() ) ) {
+
+					return $this->showJson( '400 Bad Request', [
+						'ok' => 'false',
+						'error' => 'peticion incorrecta'
+					]);
+				}
+			
+				return $this->showJson( '200 OK', [
+					'ok' => 'true',
+					'heroe' => ( int ) $this->getParams()
+				]);
+
+			case 'DELETE':
+			
+				if ( empty( $this->getParams() ) ) {
+					return $this->showJson( '400 Bad Request', [
+						'ok' => 'false',
+						'error' => 'peticion incorrecta'
+					]);
+				}
+
+				return $this->showJson( '200 OK', [
+					'ok' => 'true',
+					'heroe' => ( int ) $this->getParams()
+				]);
+			
+			default:
+
+				return $this->showJson('404 Not Found', [
+					'ok' => 'false',
+					'error' => 'recurso no encontrado'
+				]);
+		}
+	}
+		
+
+	private function getParams() {
+
+		$params = $_SERVER['QUERY_STRING'];
+
+		if ( empty( $params ) ) {
+			return null;
+		
+		} else {
+
+			list( $id, $value ) = explode( '=',  $params );
+			
+			if ( !filter_var( $value, FILTER_VALIDATE_INT ) ) {
+				return null;
+			}
+
+			if ( $value == 0 ) {
+				return null;
+			}
+			
+			return $value;
 		}
 
-		if ( $requestMethod == 'POST' ) {
-			echo "peticion post";
-			return;
-		}
+	}
 
-		if ( $requestMethod == 'PUT' ) {
-			echo "peticion put";
-			return;
-		}
+	private function showJson( $status = '', $json = [] ) {
 
-		if ( $requestMethod == 'DELETE' ) {
-			echo "peticion delete";
-			return;
-		}
+		header('Content-Type: application/json');
+		header( 'HTTP/1.1 '. $status );
 
-		// En caso de que ninguna de las opciones anteriores se haya ejecutado
-		header("HTTP/1.1 400 Bad Request");
+		echo json_encode( $json );
 	}
 }
 
