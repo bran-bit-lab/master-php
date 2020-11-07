@@ -3,27 +3,22 @@
 namespace heroes\routes;
 
 use heroes\clases\Heroe;
-use mysql\MySQL;
 
-// herencia de clases
 class HeroeRoutes extends Heroe {
+	
 
 	public function __construct() {
 		
 		$requestMethod = $_SERVER['REQUEST_METHOD'];
 
-		$mysql = new MySQL();
-
 		switch ( $requestMethod ) {
 			
 			case 'GET':
 				
-				if ( empty( $this->getParams() ) ) {
-				
-					return $this->showJson( '200 OK', [
-						'ok' => 'true',
-						'heroes' => []
-					]);
+				if ( empty( $this->getParams() ) ) {	
+					
+					$resp = $this->getAllHeroes();
+					return $this->showJson( $resp['status'], $resp );
 				}
 			
 				return $this->showJson( '200 OK', [
@@ -50,9 +45,6 @@ class HeroeRoutes extends Heroe {
 						'error' => 'peticion incorrecta'
 					]);
 				}
-
-
-				$mysql->executeQuery();
 
 
 				return $this->showJson('201 Created', [
