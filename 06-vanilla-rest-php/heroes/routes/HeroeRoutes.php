@@ -15,16 +15,25 @@ class HeroeRoutes extends Heroe {
 			
 			case 'GET':
 				
-				if ( empty( $this->getParams() ) ) {	
+				if ( is_array( $this->getParams() ) ) {	
 					
-					$resp = $this->getAllHeroes();
+					$resp = $this->getParams();
+
 					return $this->showJson( $resp['status'], $resp );
-				}
-			
-				return $this->showJson( '200 OK', [
-					'ok' => 'true',
-					'heroe' => ( int ) $this->getParams()
-				]);
+				
+				} else if ( empty( $this->getParams() ) ) {
+
+					$resp = $this->getAllHeroes();
+					
+					return $this->showJson( $resp['status'], $resp );
+				
+				} else {
+
+					$resp = $this->getHeroe( $this->getParams() );
+					
+					return $this->showJson( $resp['status'], $resp );			
+				} 
+					
 
 
 			case 'POST':
@@ -37,21 +46,17 @@ class HeroeRoutes extends Heroe {
 
 				$body = json_decode( file_get_contents('php://input'), true );
 
-				
-				if ( !is_array( $body ) ) {
+				if ( !is_array( $body ) || empty( $this->validateBody( $body ) ) ) {
 					
 					return $this->showJson( '400 Bad Request', [
 						'ok' => 'false',
-						'error' => 'peticion incorrecta'
+						'error' => 'carga de peticion incorrecta'
 					]);
 				}
 
+				$resp = $this->createHeroe( $body );
 
-				return $this->showJson('201 Created', [
-					'ok' => 'true',
-					'heroe' => $body
-				]);
-
+				return $this->showJson( $resp['status'], $resp );	
 
 			case 'PUT':
 				
@@ -59,7 +64,7 @@ class HeroeRoutes extends Heroe {
 
 					return $this->showJson( '400 Bad Request', [
 						'ok' => 'false',
-						'error' => 'peticion incorrecta'
+						'error' => 'peticion incorrecta',
 					]);
 				}
 			
@@ -103,15 +108,11 @@ class HeroeRoutes extends Heroe {
 
 			list( $id, $value ) = explode( '=',  $params );
 			
-			if ( !filter_var( $value, FILTER_VALIDATE_INT ) ) {
-				return null;
+			if ( !filter_var( $value, FILTER_VALIDATE_INT ) || $value == 0 ) {
+				
 			}
-
-			if ( $value == 0 ) {
-				return null;
-			}
-			
-			return $value;
+		
+			return (int) $value;
 		}
 
 	}
@@ -122,6 +123,22 @@ class HeroeRoutes extends Heroe {
 		header( 'HTTP/1.1 '. $status );
 
 		echo json_encode( $json );
+	}
+
+	private function validateBody( $body = [] ) {
+
+		if ( count( $body ) == 0 ) {
+			return null;
+		}
+
+		foreach ( $body as $field ) {
+			
+			if ( !preg_match( '/^[A-Za-z0-9\s]+$/', $field ) ) {
+				return null; 
+			}
+		}
+
+		return $body;
 	}
 }
 

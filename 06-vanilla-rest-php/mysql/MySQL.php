@@ -4,7 +4,7 @@ namespace mysql;
 
 use PDO;
 
-use Exception;
+// use Exception;
 use PDOException;
 
 class MySQL {
@@ -45,37 +45,44 @@ class MySQL {
 
 		} catch ( PDOException $error ) {	
 			return false;
+
 		}
 	}
 
-	public function executeQuery( $sql, $selectAll = false ) {
+	public function executeQuery( $sql = '' ) {
 
-		$con = $this->connect();
-
-		if ( !$con ) {
-			return [
-				'ok' => 'false',
-				'error' => 'error en conexion de BD',
-				'status' => 500
-			];
+		if ( !$this->connect() ) {
+			return false;
 		}
 
 		$resp = $this->bd->prepare( $sql );
-
+		$resp->setFetchMode( PDO::FETCH_ASSOC );
+		
 		if ( !$resp ) {
-			return [
-				'ok' => 'false',
-				'error' => 'error en instrucción SQL',
-				'status' => 500
-			];
-		}
-
-		if ( $selectAll ) {
-			$resp->setFetchMode( PDO::FETCH_ASSOC );
+			return false;
 		}
 
 		$resp->execute();
+		
 		return $resp;
+	}
+
+	public function executeQueryParams( $sql = '', $params = [] ) {
+
+		if ( !$this->connect() ) {
+			return false;
+		}
+
+		$resp = $this->bd->prepare( $sql );
+		$resp->setFetchMode( PDO::FETCH_ASSOC );
+		
+		if ( !$resp ) {
+			return false;
+		}
+
+		$resp->execute( $params );
+		
+		return $resp;	
 	}
 
 	public function __destruct() {
