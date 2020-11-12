@@ -4,7 +4,7 @@ namespace mysql;
 
 use PDO;
 
-// use Exception;
+use Exception;
 use PDOException;
 
 class MySQL {
@@ -16,28 +16,35 @@ class MySQL {
 
 	public function __construct( $path = './server/connection.ini' ) {
 
-		// manejo de excepciones try-catch: https://www.php.net/manual/es/language.exceptions.php
+		try {
+			
+			if ( !file_exists( $path ) ) {
+				throw new Exception("No se pudo encontrar el archivo de configuracion", 1);	
+			}
 
-		if ( !file_exists( $path ) ) {
-			echo "no se pudo encontrar el archivo de configuracion";
+			$settings = parse_ini_file( $path, true );
+
+			$dsn = $settings['mysql']['driver']. ':';
+			$dsn .= 'dbname:'. $settings['mysql']['database']. ';';
+			$dsn .= 'host:'. $settings['mysql']['host']. ';';
+
+			$dsn .= ( !empty( $settings['mysql']['port'] ) ) ? ( 'port='. $settings['mysql']['port']. ';' ) :
+				( '' );
+
+			$this->dsn = $dsn;
+			$this->username = $settings['mysql']['username'];
+			$this->password = $settings['mysql']['password'];
+
+		} catch ( Exception $error ) {
+			
+			echo $error->getMessage();
 			die();
 		}
-
-		$settings = parse_ini_file( $path, true );
-
-		$dsn = $settings['mysql']['driver']. ':';
-		$dsn .= 'dbname:'. $settings['mysql']['database']. ';';
-		$dsn .= 'host:'. $settings['mysql']['host']. ';';
-
-		$dsn .= ( !empty( $settings['mysql']['port'] ) ) ? ( 'port='. $settings['mysql']['port']. ';' ) :
-			( '' );
-
-		$this->dsn = $dsn;
-		$this->username = $settings['mysql']['username'];
-		$this->password = $settings['mysql']['password'];
 	}
 
-	public function connect() {
+	private function connect() {
+		
+		// manejo de excepciones try-catch: https://www.php.net/manual/es/language.exceptions.php
 
 		try {
 			$this->bd = new PDO( $this->dsn, $this->username, $this->password );
@@ -49,13 +56,16 @@ class MySQL {
 		}
 	}
 
-	public function executeQuery( $sql = '' ) {
+	// funciones estaticas
+	public static function executeQuery( $sql = '' ) {
 
-		if ( !$this->connect() ) {
+		$mysql = new MySQL();
+
+		if ( !$mysql->connect() ) {
 			return false;
 		}
 
-		$resp = $this->bd->prepare( $sql );
+		$resp = $mysql->bd->prepare( $sql );
 		$resp->setFetchMode( PDO::FETCH_ASSOC );
 		
 		if ( !$resp ) {
@@ -67,13 +77,15 @@ class MySQL {
 		return $resp;
 	}
 
-	public function executeQueryParams( $sql = '', $params = [] ) {
+	public static function executeQueryParams( $sql = '', $params = [] ) {
 
-		if ( !$this->connect() ) {
+		$mysql = new MySQL();
+
+		if ( !$mysql->connect() ) {
 			return false;
 		}
 
-		$resp = $this->bd->prepare( $sql );
+		$resp = $mysql->bd->prepare( $sql );
 		$resp->setFetchMode( PDO::FETCH_ASSOC );
 		
 		if ( !$resp ) {

@@ -10,7 +10,8 @@ function appAutoload( $className ) {
 	// echo $path;
 
 	if ( !file_exists( $path ) ) {
-		throw new Exception('No se pudo encontrar el archivo');
+		echo 'No se pudo encontrar el archivo';
+		die();
 	}
 
 	require_once $path;

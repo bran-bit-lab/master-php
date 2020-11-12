@@ -6,7 +6,6 @@ use heroes\clases\Heroe;
 
 class HeroeRoutes extends Heroe {
 	
-
 	public function __construct() {
 		
 		$requestMethod = $_SERVER['REQUEST_METHOD'];
@@ -15,13 +14,13 @@ class HeroeRoutes extends Heroe {
 			
 			case 'GET':
 				
-				if ( is_array( $this->getParams() ) ) {	
+				if ( is_array( $this->getParamsRoute() ) ) {	
 					
-					$resp = $this->getParams();
+					$resp = $this->getParamsRoute();
 
 					return $this->showJson( $resp['status'], $resp );
 				
-				} else if ( empty( $this->getParams() ) ) {
+				} else if ( empty( $this->getParamsRoute() ) ) {
 
 					$resp = $this->getAllHeroes();
 					
@@ -29,12 +28,11 @@ class HeroeRoutes extends Heroe {
 				
 				} else {
 
-					$resp = $this->getHeroe( $this->getParams() );
+					$resp = $this->getHeroe( $this->getParamsRoute() );
 					
 					return $this->showJson( $resp['status'], $resp );			
 				} 
-					
-
+			
 
 			case 'POST':
 
@@ -59,33 +57,44 @@ class HeroeRoutes extends Heroe {
 				return $this->showJson( $resp['status'], $resp );	
 
 			case 'PUT':
-				
-				if ( empty( $this->getParams() ) ) {
+
+				$body = json_decode( file_get_contents('php://input'), true );
+
+				if ( !is_array( $body ) || empty( $this->validateBody( $body ) ) ) {
+					
+					return $this->showJson( '400 Bad Request', [
+						'ok' => 'false',
+						'error' => 'carga de peticion incorrecta'
+					]);
+				}
+
+				// parametro de ruta 
+				if ( empty( $this->getParamsRoute() ) ) {
 
 					return $this->showJson( '400 Bad Request', [
 						'ok' => 'false',
 						'error' => 'peticion incorrecta',
 					]);
 				}
+
+				$resp = $this->updateHeroe( $this->getParamsRoute(), $body );
 			
-				return $this->showJson( '200 OK', [
-					'ok' => 'true',
-					'heroe' => ( int ) $this->getParams()
-				]);
+				return $this->showJson( $resp['status'], $resp );	
 
 			case 'DELETE':
-			
-				if ( empty( $this->getParams() ) ) {
+
+				if ( empty( $this->getParamsRoute() ) ) {
+					
 					return $this->showJson( '400 Bad Request', [
 						'ok' => 'false',
 						'error' => 'peticion incorrecta'
 					]);
+
 				}
 
-				return $this->showJson( '200 OK', [
-					'ok' => 'true',
-					'heroe' => ( int ) $this->getParams()
-				]);
+				$resp = $this->deleteHeroe( $this->getParamsRoute() );
+			
+				return $this->showJson( $resp['status'], $resp );	
 			
 			default:
 
@@ -96,8 +105,7 @@ class HeroeRoutes extends Heroe {
 		}
 	}
 		
-
-	private function getParams() {
+	private function getParamsRoute() {
 
 		$params = $_SERVER['QUERY_STRING'];
 
@@ -109,7 +117,7 @@ class HeroeRoutes extends Heroe {
 			list( $id, $value ) = explode( '=',  $params );
 			
 			if ( !filter_var( $value, FILTER_VALIDATE_INT ) || $value == 0 ) {
-				
+				return null;
 			}
 		
 			return (int) $value;
