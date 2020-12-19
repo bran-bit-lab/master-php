@@ -1,7 +1,7 @@
 <?php 
 
 	namespace MisClases;
-	//la clases nativas como PDO se deben llamar de la siguiente manera para ser encontrada por el autoload
+	//la clases nativas como PDO se deben llamar de la siguiente manera para ser encontradas por el autoload
 	use PDO;
 	
 	class Bd {
@@ -9,11 +9,8 @@
 		use SQL;
 
 		private $dsn = '';
-
 		private $usuario = '';
-
 		private $contrasenia = '';
-
 		private $pdo = null;
 
 		public function __construct ($filePath = './Ejemplo/config/base-de-datos-prueba.ini'){
@@ -97,7 +94,6 @@
 
 		public function actualizarDatos(){
 			
-
 			$sql= $this->actualizar(); 
 			$this->conectar();
 
@@ -142,11 +138,7 @@
 	}
 
 }
-	//$base = new Bd;
-	 
-	//$base->crearTabla();
-	//$base->eliminarDatos();
-
+	
 	//prepare valida el codigo SQL
 	//execute sentencia recomendada preferible a la sentencia query
  ?> 

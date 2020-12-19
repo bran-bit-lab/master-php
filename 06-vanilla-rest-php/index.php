@@ -5,4 +5,4 @@ require_once './autoload.php';
 
 use heroes\routes\HeroeRoutes;
 
-$routes = new HeroeRoutes();
+$routes = new HeroeRoutes(); 
