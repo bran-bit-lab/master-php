@@ -1,0 +1,8 @@
+{
+    "name": "gabriel/07-promesas-php",
+    "description": "prototipos de promesas",
+    "require": {
+        "guzzlehttp/promises": "^1.4",
+        "guzzlehttp/guzzle": "^7.2"
+    }
+}
