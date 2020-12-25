@@ -13,7 +13,9 @@
 
 	puede ser utilizada para consultar cualquier api a nivel mundial.
 
-	documentación: https://docs.guzzlephp.org/en/stable/
+	documentación: 
+	https://docs.guzzlephp.org/en/stable/
+	https://packagist.org/packages/guzzlehttp/guzzle
 */
 
 require_once 'vendor/autoload.php';
