@@ -1,9 +1,5 @@
 <?php  
 	
-	require_once 'vendor/autoload.php';
-	
-	use GuzzleHttp\Promise\Promise;
-
 	/*
 		
 		Las promesas son estados de procesos de ejecucion
@@ -21,6 +17,12 @@
 
 	*/
 
+	
+	// se cargan las librerias de composer	
+	require_once '../vendor/autoload.php';
+	
+	use GuzzleHttp\Promise\Promise;
+	
 	function getName( $name, $promise ) {
 		!empty( $name ) ? $promise->resolve( $name ) : $promise->reject('Nombre no valido');
 	}
@@ -28,7 +30,7 @@
 	$promise1 = new Promise();
 
 	$promise1
-		->then(
+		->then( 
 			
 			// ejecucion exitosa (resolve)
 			function( $value ) {
