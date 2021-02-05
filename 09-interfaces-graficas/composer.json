@@ -1,0 +1,7 @@
+{
+    "name": "gabriel/09-interfaces-graficas",
+    "description": "prueba de interfaces graficas",
+    "require": {
+        "gabrielrcouto/php-gui": "^0.1.1"
+    }
+}
